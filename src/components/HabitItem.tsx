@@ -25,9 +25,9 @@ const HabitItem = ({ habit }: HabitItemProps) => {
         </div>
         <Button>Delete</Button>
       </div>
-      <div className="flex gap-1.5">
+      <div className="flex gap-1.5 py-3">
         {visibleDates.map((date) => (
-          <Button key={date.toISOString()}>
+          <Button key={date.toISOString()} className="flex-1">
             <span className="font-medium">{format(date, "EEE")}</span>
             <span>{format(date, "d")}</span>
           </Button>
