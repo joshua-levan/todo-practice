@@ -1,5 +1,7 @@
+import { type ReactNode } from "react"
+
 type ButtonProps = {
-    children: string
+    children: ReactNode
 }
 const Button = ({ children }:ButtonProps) => {
   return (

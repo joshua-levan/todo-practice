@@ -1,3 +1,4 @@
+import { eachDayOfInterval, endOfWeek, startOfWeek } from "date-fns";
 import Button from "./Button";
 
 interface Habit {
@@ -11,17 +12,24 @@ type HabitItemProps = {
 };
 
 const HabitItem = ({ habit }: HabitItemProps) => {
-    const visibleDates = [new Date()]
+  const visibleDates = eachDayOfInterval({start:startOfWeek(new Date()), end: endOfWeek(new Date())});
   return (
     <div className="rounded-xl bg-zinc-800 p-4">
       <div className="flex items-center justify-between">
         <div className="flex gap-3 items-center">
-          <span className="sont-medium">{habit.name}</span>
+          <span className="font-medium">{habit.name}</span>
           <span className="text-sm text-amber-400">🔥 3</span>
         </div>
         <Button>Delete</Button>
       </div>
-      <div className="flex gap-1.5"></div>
+      <div className="flex gap-1.5">
+        {visibleDates.map((date) => (
+          <Button key={date.toISOString()}>
+            <span className="font-medium">Mon</span>
+            <span>2</span>
+          </Button>
+        ))}
+      </div>
     </div>
   );
 };
